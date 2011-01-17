@@ -1,3 +1,4 @@
 pkg/*
+public/stylesheets/sass/.sass-cache/*
 *.gem
 .bundle
