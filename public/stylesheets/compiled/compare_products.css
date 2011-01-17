@@ -1,0 +1,8 @@
+table th {
+  background: #dddddd;
+  padding: 10px;
+  text-align: right;
+  border: 1px solid #dddddd; }
+table td {
+  border: 1px solid #dddddd;
+  text-align: center; }
