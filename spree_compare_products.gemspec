@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
   
   s.required_ruby_version = '>= 1.8.7'
   
-  s.add_dependency('spree_core', '>= 0.50.99')
+  s.add_dependency('spree_core', '>= 0.40.99')
 end

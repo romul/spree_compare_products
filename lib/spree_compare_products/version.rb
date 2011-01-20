@@ -1,3 +1,3 @@
 module SpreeCompareProducts
-  VERSION = '0.50.99'
+  VERSION = '0.40.90'
 end

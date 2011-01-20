@@ -6,8 +6,7 @@
 
 <% form_tag(compare_products_path, :method => :get) do %>
   <%= hidden_field_tag('taxon_permalink', params[:id]) %>
-  
-  <%= render 'shared/products.html.erb', :products => @products, :taxon => @taxon, :compare => true %>
-  
+  <% @comparable = true %>
+  <%= render 'shared/products.html.erb', :products => @products, :taxon => @taxon %>
   <%= submit_tag t('compare_products.compare'), :id => 'compare', :class => 'button' %>
 <% end %>
