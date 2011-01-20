@@ -16,7 +16,7 @@
       <th><%= row.shift -%></th>
       
       <% row.each do |field| %>
-        <td><%= field || '&mdash;' %></td>
+        <td><%= field || raw('&mdash;') %></td>
       <% end %>
     </tr>
   <% end %>
