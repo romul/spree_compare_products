@@ -6,4 +6,16 @@ class SpreeCompareProductsHooks < Spree::ThemeSupport::HookListener
   
   insert_after :products_list_item, 'shared/compare_product_field'
   
+  insert_after :sidebar do 
+    %(
+    <div class="sidebar-item" id="comparable_products_wrapper">
+      <%= render 'shared/comparable_products' %>
+    </div>
+    )
+  end
+  
+  insert_after :inside_head do
+    "<%= javascript_include_tag 'product_comparison' %>"
+  end
+  
 end

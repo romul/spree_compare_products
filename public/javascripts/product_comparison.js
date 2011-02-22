@@ -101,4 +101,7 @@ var ProductComparison = function(params) {
 
 $(document).ready(function() {
   var productComparison = new ProductComparison();
+  $('#comparable_products li a').live('ajax:before', function() {
+     $(this).parent('li').fadeOut();
+  });
 });

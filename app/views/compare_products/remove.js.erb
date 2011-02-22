@@ -1,0 +1,7 @@
+notice_div = $("div.notice");
+<% notice = flash.delete(:notice) %>
+if (notice_div.length > 0) {
+  notice_div.html("<%= notice %>");
+} else {
+  $("#content .breadcrumbs").after('<div class="flash notice"><%= notice %></div>');
+}

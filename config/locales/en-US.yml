@@ -8,3 +8,4 @@ en:
     limit_is_4: You can only compare up to 4 products.
     product_comparison: Product comparison
     taxon_not_comparable: "Products inside this taxon can't be compared"
+    add_to_comparison: "Compare"
