@@ -9,7 +9,7 @@ if notice %>
     notice_div.html("<%= notice %>");
     notice_div.show();
   } else {
-    $("#content .breadcrumbs").after('<div class="flash notice"><%= notice %></div>');
+    $("#content h1").before('<div class="flash notice"><%= notice %></div>');
   } <%
 end 
 error = flash.delete(:error)
@@ -19,6 +19,6 @@ if error %>
     error_div.html("<%= notice %>");
     error_div.show();
   } else {
-    $("#content .breadcrumbs").after('<div class="flash errors"><%= error %></div>');
+    $("#content h1").before('<div class="flash errors"><%= error %></div>');
   }
 <% end %>

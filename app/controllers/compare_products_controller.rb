@@ -10,9 +10,8 @@ class CompareProductsController < Spree::BaseController
   end
   
   def add
-    session[:comparable_product_ids] ||= []
     product = Product.find_by_permalink(params[:id])
-    if product && (product.taxons.include?(@taxon) || @products.size < 1)
+    if product && (product.taxons.map(&:id).include?(@taxon.try(:id)) || @products.size < 1)
       session[:comparable_product_ids] << product.id
       session[:comparable_product_ids].uniq!
       flash[:notice] = I18n.t(:added_to_comparison, :scope => :compare_products)
@@ -51,7 +50,7 @@ class CompareProductsController < Spree::BaseController
   private
   
   def find_taxon
-    find_products
+    @products = find_products
     if @products.size > 1
       @taxon = @products.inject(@products[0].taxons){|t, p| t & p.taxons }.select{|t| t.is_comparable? }.first
 
@@ -65,16 +64,15 @@ class CompareProductsController < Spree::BaseController
   
   
   def find_products
+    session[:comparable_product_ids] ||= []
     product_ids = session[:comparable_product_ids]
-    
     if product_ids.length >= 4
       flash[:notice] = I18n.t('compare_products.limit_is_4')
       product_ids = product_ids[0...3]
     elsif product_ids.length < 2
       flash[:error] = I18n.t('compare_products.insufficient_data')
     end
-    
-    @products = Product.find(:all, :conditions => { :id => product_ids}, :include => { :product_properties => :property }, :limit => 4)
+    Product.find(:all, :conditions => { :id => product_ids}, :include => { :product_properties => :property }, :limit => 4)
   end
   
 end

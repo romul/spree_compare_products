@@ -6,6 +6,8 @@ class SpreeCompareProductsHooks < Spree::ThemeSupport::HookListener
   
   insert_after :products_list_item, 'shared/compare_product_field'
   
+  insert_after :cart_form, 'products/compare'
+  
   insert_after :sidebar do 
     %(
     <div class="sidebar-item" id="comparable_products_wrapper">

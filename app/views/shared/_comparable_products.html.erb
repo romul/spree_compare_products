@@ -1,5 +1,5 @@
-<% if session[:comparable_product_ids] %>
-  <h5><%= t(:сomparable_products, :scope => :compare_products) %></h5>
+<% if session[:comparable_product_ids].present? %>
+  <h3><%= t(:сomparable_products, :scope => :compare_products) %></h3>
   <ul id="comparable_products">
   <% Product.find(session[:comparable_product_ids]).each do |p| %>
     <li><%= p.name %> <%= link_to image_tag('remove.png'), remove_from_comparison_path(p), :remote => true %></li>
