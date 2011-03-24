@@ -1,9 +1,8 @@
-<% if session[:comparable_product_ids].present? %>
+<div id="comparable_products_wrapper" >
   <h3><%= t(:сomparable_products, :scope => :compare_products) %></h3>
   <ul id="comparable_products">
-  <% Product.find(session[:comparable_product_ids]).each do |p| %>
-    <li><%= p.name %> <%= link_to image_tag('remove.png'), remove_from_comparison_path(p), :remote => true %></li>
-  <% end %>
+    <%= render :partial => 'shared/comparable_line_item', :collection => @comparable_products  %>
   </ul>
-  <%= link_to t(:compare, :scope => :compare_products), compare_products_path %>
-<% end %>
+  <div><%= link_to t(:compare, :scope => :compare_products), compare_products_path %></div>
+  <div><%= link_to t(:compare_clear, :scope => :compare_products), destroy_comparison_path %></div>
+</div>

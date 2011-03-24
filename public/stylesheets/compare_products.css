@@ -1,0 +1,11 @@
+table.compare_product_show th {
+  background: #dddddd;
+  padding: 10px;
+  text-align: right;
+  border: 1px solid #dddddd;
+}
+
+table.compare_product_show td {
+  border: 1px solid #dddddd;
+  text-align: center;
+}

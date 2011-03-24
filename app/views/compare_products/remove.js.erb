@@ -1,7 +1,28 @@
+showComparePopup();
+<% if @deleted_product %>
+  $("#comp_item_<%= @deleted_product.id %>").slideUp(function() { $(this).remove() });
+  $("#compare_products").html("<%= t(:compare_products, :scope => :compare_products, :count => @comparable_products.count - 1) %>");
+<% end %>
+
 notice_div = $("div.notice");
-<% notice = flash.delete(:notice) %>
-if (notice_div.length > 0) {
-  notice_div.html("<%= notice %>");
-} else {
-  $("#content .breadcrumbs").after('<div class="flash notice"><%= notice %></div>');
-}
+error_div = $("div.errors");
+<% notice = flash.delete(:notice)
+if notice %>
+  error_div.hide();
+  if (notice_div.length > 0) {
+    notice_div.html("<%= notice %>");
+    notice_div.show();
+  } else {
+    $("#content").prepend('<div class="flash notice"><%= notice %></div>');
+  } <%
+end
+error = flash.delete(:error)
+if error %>
+  notice_div.hide();
+  if (error_div.length > 0) {
+    error_div.html("<%= notice %>");
+    error_div.show();
+  } else {
+    $("#content").prepend('<div class="flash errors"><%= error %></div>');
+  }
+<% end %>

@@ -1,17 +1,15 @@
-<% content_for :head do %>
-  <%= stylesheet_link_tag 'compiled/compare_products' %>
-<% end %>
+<% @body_class = 'one-col' %>
 
-<% content_for :sidebar do %>
-  <%= render :partial => 'shared/taxonomies' %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'compare_products' %>
 <% end %>
 
 <h1>
   <%= t('compare_products.product_comparison') %>
 </h1>
-
-<table>
-  <% comparison_rows_for(@products, @properties).each do |row| %>
+<% if @comparable_products.count > 1 %>
+<table class="compare_product_show">
+  <% comparison_rows_for(@comparable_products, @properties).each do |row| %>
     <tr>
       <th><%= row.shift -%></th>
       
@@ -21,5 +19,8 @@
     </tr>
   <% end %>
 </table>
+<% else %>
+  <p><%= t('compare_products.insufficient_data') %></p>
+<% end %>
 
-<%= link_to t('continue_shopping'), seo_url(@taxon), :class => 'continue button' %>
+<%= link_to t('continue_shopping'), @taxon ? seo_url(@taxon) : products_path, :class => 'continue button' %>
