@@ -1,5 +1,1 @@
-<% if @taxon && @taxon.taxonomy.comparable? && @products.length > 1 %>
-  <%= render('taxons/comparable_taxon') %>
-<% else %>
-  <%= render('shared/products.html.erb', :products => @products, :taxon => @taxon) %>
-<% end %>
+<%= render('shared/products', :products => @products, :taxon => @taxon) %>

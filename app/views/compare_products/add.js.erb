@@ -1,4 +1,9 @@
-$("#comparable_products_wrapper").html("<%= escape_javascript(render(:partial => "shared/comparable_products")) %>");
+showComparePopup();
+<% if @added_product %>
+  $("#comparable_products").append("<%= escape_javascript(render(:partial => "shared/comparable_line_item", :object => @added_product)) %>");
+  $("#comp_item_<%= @added_product.id %>").hide().slideDown();
+  $("#compare_products").html("<%= t(:compare_products, :scope => :compare_products, :count => @comparable_products.count + 1) %>");
+<% end %>
 
 notice_div = $("div.notice");
 error_div = $("div.errors");
@@ -9,9 +14,9 @@ if notice %>
     notice_div.html("<%= notice %>");
     notice_div.show();
   } else {
-    $("#content h1").before('<div class="flash notice"><%= notice %></div>');
+    $("#content").prepend('<div class="flash notice"><%= notice %></div>');
   } <%
-end 
+end
 error = flash.delete(:error)
 if error %>
   notice_div.hide();
@@ -19,6 +24,6 @@ if error %>
     error_div.html("<%= notice %>");
     error_div.show();
   } else {
-    $("#content h1").before('<div class="flash errors"><%= error %></div>');
+    $("#content").prepend('<div class="flash errors"><%= error %></div>');
   }
 <% end %>
