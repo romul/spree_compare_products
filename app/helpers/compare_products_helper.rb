@@ -11,7 +11,7 @@ module CompareProductsHelper
   def comparison_rows_for(products, properties)
     fields = [comparison_fields_for(products, properties)]
     products.each do |product|
-      fields << (fields_for(product, properties))
+      fields << (product_fields_for(product, properties))
     end
     fields.transpose
   end
@@ -21,7 +21,8 @@ module CompareProductsHelper
   # 
   # Example:
   #   ["product1 image", "product1 name", ..., "product1 price"]
-  def fields_for(product, properties)
+  
+  def product_fields_for(product, properties)
     [ link_to(small_image(product), product), link_to(product.name, product)].tap { |fields|
       properties.each do |property|
         fields << product.product_properties.find_by_property_id(property.id).try(:value)

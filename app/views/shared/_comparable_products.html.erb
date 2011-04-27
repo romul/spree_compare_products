@@ -1,8 +1,8 @@
 <div id="comparable_products_wrapper" >
-  <h3><%= t(:сomparable_products, :scope => :compare_products) %></h3>
+  <h3><%= t('сomparable_products', :scope => :compare_products) %></h3>
   <ul id="comparable_products">
-    <%= render :partial => 'shared/comparable_line_item', :collection => @comparable_products  %>
+    <%= render :partial => 'shared/comparable_line_item', :collection => @comparable_products %>
   </ul>
-  <div><%= link_to t(:compare, :scope => :compare_products), compare_products_path %></div>
-  <div><%= link_to t(:compare_clear, :scope => :compare_products), destroy_comparison_path %></div>
+  <div id="compare_products_link"><%= link_to t(:compare, :scope => :compare_products), compare_products_path %></div>
+  <div id="clear_comparable_products_link"><%= link_to t(:compare_clear, :scope => :compare_products), destroy_comparison_path %></div>
 </div>

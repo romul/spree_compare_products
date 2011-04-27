@@ -1,1 +1,1 @@
-<li id="comp_item_<%= comparable_line_item.id %>"><%= comparable_line_item.name %> <%= link_to image_tag('remove.png'), remove_from_comparison_path(comparable_line_item), :remote => true %></li>
+<li id="comp_item_<%= comparable_line_item.id %>"><%= link_to comparable_line_item.name, comparable_line_item %> <%= link_to "", remove_from_comparison_path(comparable_line_item), :remote => true, :class => "remove-comparable-item" %></li>
