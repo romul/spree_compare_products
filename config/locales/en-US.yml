@@ -9,3 +9,4 @@ en:
     product_comparison: Product comparison
     taxon_not_comparable: "Products inside this taxon can't be compared"
     add_to_comparison: "Compare"
+    no_products_to_compare: "There is no products to compare"

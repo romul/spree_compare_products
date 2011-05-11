@@ -3,6 +3,7 @@
   <ul id="comparable_products">
     <%= render :partial => 'shared/comparable_line_item', :collection => @comparable_products %>
   </ul>
+  <div style="display: none" class="no_products_message"><%= t(:no_products_to_compare, :scope => :compare_products) %></div>
   <div id="compare_products_link"><%= link_to t(:compare, :scope => :compare_products), compare_products_path %></div>
   <div id="clear_comparable_products_link"><%= link_to t(:compare_clear, :scope => :compare_products), destroy_comparison_path %></div>
 </div>
